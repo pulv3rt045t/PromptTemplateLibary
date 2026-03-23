@@ -1,5 +1,5 @@
-# TEMPLATE: Cheat Sheet · Druck · Experte · Ausführlich
-# Trigger: [THEMA] - Druck-Experte-Ausfuehrlich
+# TEMPLATE: Cheat Sheet · Druck · Beginner · Kompakt
+# Trigger: [THEMA] - Druck-Beginner-Kompakt
 #
 # ANWEISUNG AN CLAUDE:
 # 1. Kopiere den GESAMTEN Python-Code unverändert
@@ -7,10 +7,10 @@
 # 3. Führe das Script aus und liefere die PDF
 # 4. Verändere NIEMALS die Engine-Funktionen (draw_rows, wrap_text, card_bg, etc.)
 
-# MODUS: DRUCK | ZIELGRUPPE: EXPERTE | UMFANG: AUSFÜHRLICH
-# CODE-BOX: JA (12–16 Zeilen, reales Praxisbeispiel)
-# Karten 1+2: 10–12 Einträge | Karten 3+4+5: 8–10 Einträge
-# Fachbegriffe erlaubt, keine Grundlagen-Erklärungen
+# MODUS: DRUCK | ZIELGRUPPE: BEGINNER | UMFANG: KOMPAKT
+# CODE-BOX: NEIN → FORMEL-BOX wird verwendet
+# Karten 1+2: 6–8 Einträge | Karten 3+4+5: 6–8 Einträge
+# Einfache Sprache, nur das Wichtigste, keine Fachbegriffe ohne Erklärung
 
 ```python
 from reportlab.lib.pagesizes import A4
@@ -46,26 +46,26 @@ C = {
 
 TITEL      = '[THEMA IN GROSSBUCHSTABEN] CHEAT SHEET'
 UNTERTITEL = '[Kurzbeschreibung  ·  Quelle/Website]'
-TIPP       = 'Tipp: [Themenspezifischer Experten-Merksatz]'
+TIPP       = 'Tipp: [Themenspezifischer Einsteiger-Merksatz]'
 
 SECTIONS = [
     ('[KARTE 1 TITEL]', 'green', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
         ('[Keyword 2]',  '[Beschreibung 2]'),
-        # ... 10–12 Einträge, Keyword max. 18 Z., Beschreibung max. 35 Z.
-        # Fachbegriffe erlaubt, präzise & dicht formulieren
+        # ... 6–8 Einträge, Keyword max. 18 Z., Beschreibung max. 35 Z.
+        # Einfache Sprache, nur das Wichtigste
     ]),
     ('[KARTE 2 TITEL]', 'blue', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
-        # ... 10–12 Einträge
+        # ... 6–8 Einträge
     ]),
     ('[KARTE 3 TITEL]', 'purple', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
-        # ... 8–10 Einträge
+        # ... 6–8 Einträge
     ]),
     ('[KARTE 4 TITEL]', 'red', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
-        # ... 8–10 Einträge
+        # ... 6–8 Einträge
     ]),
     ('[KARTE 5 TITEL]', 'orange', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
@@ -97,21 +97,19 @@ TIPS = [
     # GENAU 6 Einträge
 ]
 
-TIPS_TITEL = 'BEST PRACTICES'
+TIPS_TITEL = 'ERSTE SCHRITTE & TIPPS'
 
-# CODE-BOX: Titel, Titelbalken-Farbe, Code-Zeilen (12–16 Zeilen, reales Praxisbeispiel)
-CODE_BOX = ('[PRAXISBEISPIEL – TYPISCHER EXPERTEN-USE-CASE]', 'blue', [
-    '# [Schritt 1 Kommentar]',
-    '[code zeile 1]',
-    '',
-    '# [Schritt 2 Kommentar]',
-    '[code zeile 2]',
-    # ... 12–16 Zeilen, reales Beispiel mit Fachlogik
-])
+# FORMEL-BOX: wird angezeigt weil CODE_BOX = None
+CODE_BOX = None   # Kein Code-Fenster → Formel-Box wird verwendet
 
-FORMEL_LABEL   = None   # Nicht verwendet wenn CODE_BOX gesetzt
-FORMEL_TEILE   = []
-FORMEL_BEISPIEL = ''
+FORMEL_LABEL    = '[FORMEL-TITEL – z.B. DIE GRUNDFORMEL]'
+FORMEL_TEILE    = [
+    ('[Teil 1]', 'green'),
+    (' + [Teil 2]', 'blue'),
+    (' + [Teil 3]', 'purple'),
+    (' + [Teil 4]', 'red'),
+]
+FORMEL_BEISPIEL = '[Konkretes Beispiel Zeile 1] · [Zeile 2 optional]'
 
 # ═══════════════════════════════════════════════
 # ── INHALT END ──
