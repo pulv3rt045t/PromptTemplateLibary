@@ -1,4 +1,4 @@
-# TEMPLATE: Cheat Sheet · Druck · Experte · Ausführlich
+# TEMPLATE: Cheat Sheet · Druck · Experte · Kompakt
 # Trigger: [THEMA] - Druck-Experte-Kompakt
 #
 # ANWEISUNG AN CLAUDE:
@@ -7,10 +7,10 @@
 # 3. Führe das Script aus und liefere die PDF
 # 4. Verändere NIEMALS die Engine-Funktionen (draw_rows, wrap_text, card_bg, etc.)
 
-# MODUS: DRUCK | ZIELGRUPPE: EXPERTE | UMFANG: AUSFÜHRLICH
+# MODUS: DRUCK | ZIELGRUPPE: EXPERTE | UMFANG: KOMPAKT
 # CODE-BOX: NEIN → FORMEL-BOX wird verwendet
- Karten 3+4+5: 8–10 Einträge| Karten 3+4+5: 8–10 Einträge
-# Fachbegriffe erlaubt, keine Grundlagen-Erklärungen
+# Karten 1+2: 6–8 Einträge | Karten 3+4+5: 6–8 Einträge
+# Fachbegriffe erlaubt, maximale Informationsdichte, nur das Wesentliche
 
 ```python
 from reportlab.lib.pagesizes import A4
@@ -53,6 +53,7 @@ SECTIONS = [
         ('[Keyword 1]',  '[Beschreibung 1]'),
         ('[Keyword 2]',  '[Beschreibung 2]'),
         # ... 6–8 Einträge, Keyword max. 18 Z., Beschreibung max. 35 Z.
+        # Fachbegriffe, maximale Dichte, kein Anfänger-Kontext
     ]),
     ('[KARTE 2 TITEL]', 'blue', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
@@ -98,19 +99,17 @@ TIPS = [
 
 TIPS_TITEL = 'BEST PRACTICES'
 
-# CODE-BOX: Titel, Titelbalken-Farbe, Code-Zeilen (max. 16)
-CODE_BOX = ('[PRAXISBEISPIEL – TYPISCHER USE CASE]', 'blue', [
-    '# [Schritt 1 Kommentar]',
-    '[code zeile 1]',
-    '',
-    '# [Schritt 2 Kommentar]',
-    '[code zeile 2]',
-    # ... max. 16 Zeilen
-])
+# FORMEL-BOX: wird angezeigt weil CODE_BOX = None
+CODE_BOX = None   # Kein Code-Fenster → Formel-Box wird verwendet
 
-FORMEL_LABEL   = None  # Nicht verwendet wenn CODE_BOX gesetzt
-FORMEL_TEILE   = []
-FORMEL_BEISPIEL = ''
+FORMEL_LABEL    = '[KERNFORMEL / GRUNDPRINZIP]'
+FORMEL_TEILE    = [
+    ('[Teil 1]', 'green'),
+    (' + [Teil 2]', 'blue'),
+    (' + [Teil 3]', 'purple'),
+    (' + [Teil 4]', 'red'),
+]
+FORMEL_BEISPIEL = '[Konkretes Fachbeispiel Zeile 1] · [Zeile 2 optional]'
 
 # ═══════════════════════════════════════════════
 # ── INHALT END ──
