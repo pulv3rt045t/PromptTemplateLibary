@@ -263,7 +263,7 @@ def draw_formula_card(cv, x, y, w, h):
 
 def draw_tips_card(cv, x, y, w, h):
     card_bg(cv, x, y, w, h, 'light', TIPS_TITEL)
-    draw_rows(cv, x, y, w, h-16, TIPS, 'muted', key_ratio=0.40)
+    draw_rows(cv, x, y, w, h-16, TIPS, 'muted', key_ratio=0.32)
 
 def make_pdf(path):
     cv = canvas.Canvas(path, pagesize=A4)
