@@ -1,4 +1,4 @@
-# TEMPLATE: Cheat Sheet · Druck · Experte · Ausführlich
+# TEMPLATE: Cheat Sheet · Web/Bildschirm · Beginner · Ausführlich
 # Trigger: [THEMA] - Web-Beginner-Ausfuehrlich
 #
 # ANWEISUNG AN CLAUDE:
@@ -7,8 +7,8 @@
 # 3. Führe das Script aus und liefere die PDF
 # 4. Verändere NIEMALS die Engine-Funktionen (draw_rows, wrap_text, card_bg, etc.)
 
-# MODUS: DRUCK | ZIELGRUPPE: EXPERTE | UMFANG: AUSFÜHRLICH
-# CODE-BOX: JA
+# MODUS: WEB/BILDSCHIRM (dunkler Hintergrund) | ZIELGRUPPE: BEGINNER | UMFANG: AUSFÜHRLICH
+# CODE-BOX: JA (10–14 Zeilen, einfaches Praxisbeispiel)
 # Karten 1+2: 10–12 Einträge | Karten 3+4+5: 8–10 Einträge
 # Einfache Sprache, Fachbegriffe kurz erklären, logische Reihenfolge
 
@@ -46,13 +46,14 @@ C = {
 
 TITEL      = '[THEMA IN GROSSBUCHSTABEN] CHEAT SHEET'
 UNTERTITEL = '[Kurzbeschreibung  ·  Quelle/Website]'
-TIPP       = 'Tipp: [Themenspezifischer Experten-Merksatz]'
+TIPP       = 'Tipp: [Themenspezifischer Einsteiger-Merksatz]'
 
 SECTIONS = [
     ('[KARTE 1 TITEL]', 'green', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
         ('[Keyword 2]',  '[Beschreibung 2]'),
         # ... 10–12 Einträge, Keyword max. 18 Z., Beschreibung max. 35 Z.
+        # Einfache Sprache, Fachbegriffe kurz erklären
     ]),
     ('[KARTE 2 TITEL]', 'blue', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
@@ -96,19 +97,19 @@ TIPS = [
     # GENAU 6 Einträge
 ]
 
-TIPS_TITEL = 'BEST PRACTICES'
+TIPS_TITEL = 'ERSTE SCHRITTE & TIPPS'
 
-# CODE-BOX: Titel, Titelbalken-Farbe, Code-Zeilen (max. 16)
-CODE_BOX = ('[PRAXISBEISPIEL – TYPISCHER USE CASE]', 'blue', [
-    '# [Schritt 1 Kommentar]',
+# CODE-BOX: Titel, Titelbalken-Farbe, Code-Zeilen (10–14 Zeilen, einfaches Beispiel)
+CODE_BOX = ('[EINFACHES PRAXISBEISPIEL – ERSTER USE CASE]', 'blue', [
+    '# [Schritt 1 Kommentar – einfache Erklärung]',
     '[code zeile 1]',
     '',
     '# [Schritt 2 Kommentar]',
     '[code zeile 2]',
-    # ... max. 16 Zeilen
+    # ... 10–14 Zeilen, einfach & gut kommentiert
 ])
 
-FORMEL_LABEL   = None  # Nicht verwendet wenn CODE_BOX gesetzt
+FORMEL_LABEL   = None   # Nicht verwendet wenn CODE_BOX gesetzt
 FORMEL_TEILE   = []
 FORMEL_BEISPIEL = ''
 
