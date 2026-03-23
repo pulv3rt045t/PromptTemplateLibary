@@ -53,6 +53,7 @@ SECTIONS = [
         ('[Keyword 1]',  '[Beschreibung 1]'),
         ('[Keyword 2]',  '[Beschreibung 2]'),
         # ... 10–12 Einträge, Keyword max. 18 Z., Beschreibung max. 35 Z.
+        # Fachbegriffe erlaubt, präzise & dicht formulieren
     ]),
     ('[KARTE 2 TITEL]', 'blue', [
         ('[Keyword 1]',  '[Beschreibung 1]'),
@@ -98,17 +99,17 @@ TIPS = [
 
 TIPS_TITEL = 'BEST PRACTICES'
 
-# CODE-BOX: Titel, Titelbalken-Farbe, Code-Zeilen (max. 16)
-CODE_BOX = ('[PRAXISBEISPIEL – TYPISCHER USE CASE]', 'blue', [
+# CODE-BOX: Titel, Titelbalken-Farbe, Code-Zeilen (12–16 Zeilen, reales Praxisbeispiel)
+CODE_BOX = ('[PRAXISBEISPIEL – TYPISCHER EXPERTEN-USE-CASE]', 'blue', [
     '# [Schritt 1 Kommentar]',
     '[code zeile 1]',
     '',
     '# [Schritt 2 Kommentar]',
     '[code zeile 2]',
-    # ... max. 16 Zeilen
+    # ... 12–16 Zeilen, reales Beispiel mit Fachlogik
 ])
 
-FORMEL_LABEL   = None  # Nicht verwendet wenn CODE_BOX gesetzt
+FORMEL_LABEL   = None   # Nicht verwendet wenn CODE_BOX gesetzt
 FORMEL_TEILE   = []
 FORMEL_BEISPIEL = ''
 
