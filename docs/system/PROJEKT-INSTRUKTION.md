@@ -142,7 +142,7 @@ docs/
 ├── cheatsheet/    ← Cheat-Sheet-Templates
 ├── research/      ← in Entwicklung
 ├── summary/       ← in Entwicklung
-└── system/        ← Projekt-Instruktion & System-Prompts
+└── system/        ← Projekt-Instruktion, System-Prompts & Template-Vorlagen
 ```
 
 Jeder Ordner enthält **eine Template-Datei pro Dokumenttyp**.
