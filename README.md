@@ -1,94 +1,93 @@
 # Claude Projekt – Template-Bibliothek
 
-Eine Sammlung von Prompt-Templates zur automatischen Generierung von druckfertigen PDFs, strukturierten Dokumenten und Cheat-Sheets direkt aus Claude heraus.
+Eine Sammlung von Prompt-Templates zur automatischen Generierung von druckfertigen PDFs, HTML-Dokumenten und Cheat-Sheets direkt aus Claude heraus.
 
 ---
 
 ## Schnellstart
 
-Trigger-Format in einem Claude-Projekt mit dieser Bibliothek:
+Einfach im Claude-Projekt-Chat aufrufen:
 
 ```
-[THEMA] - [KÜRZEL]
+CheatSheet zu [THEMA]
+PDF zu [THEMA]
 ```
 
-**Beispiele:**
-```
-Python Grundlagen - Druck-Beginner-Ausfuehrlich
-Git Workflow - Druck-Experte-Kompakt
-SQL Basics - Web-Beginner-Ausfuehrlich
-Docker Commands - Web-Experte-Kompakt
-```
-
-Claude lädt das passende Template, befüllt es mit thematisch korrektem Inhalt und liefert eine fertige PDF-Datei zum Download.
+Claude stellt automatisch eine kurze Abfrage zu Sprache, Modus, Zielgruppe etc. — danach wird die Datei generiert und zum Download bereitgestellt.
 
 ---
 
-## Template-Kategorien
+## Verfügbare Templates
 
-### 📄 Cheat Sheet (`docs/cheatsheet/`)
+### 📄 Cheat Sheet (`docs/cheatsheet/Template-Prompt-Cheat-Sheet-v4.md`)
 
-Druckfertige A4-PDF-Referenzkarten. Jedes Template enthält eine vollständige Python-Engine (reportlab) — Claude ersetzt nur den Inhalt, nie die Engine.
+Druckfertige A4-PDF-Referenzkarten. Eine Vorlage deckt alle Varianten ab — die gewünschten Optionen werden vor der Erstellung per Abfrage festgelegt.
 
-**8 Varianten nach 3 Dimensionen:**
+**Optionen (werden vor Erstellung abgefragt):**
 
-| Dimension | Optionen |
+| Option | Auswahl |
 |---|---|
-| **Modus** | `Druck` (weißer Hintergrund) · `Web` (dunkler Hintergrund #0f0f0f) |
-| **Zielgruppe** | `Beginner` (einfache Sprache) · `Experte` (Fachbegriffe, hohe Dichte) |
-| **Umfang** | `Ausfuehrlich` (10–12 Einträge + Code-Box) · `Kompakt` (6–8 Einträge + Formel-Box) |
+| Sprache | Deutsch · Englisch · Andere |
+| Ausgabe-Modus | Druck (weiß) · Bildschirm/Web (dunkel) |
+| Dateiformat | PDF · HTML · Beides |
+| Zielgruppe | Einsteiger · Experte |
+| Umfang | Kompakt (6–8 Einträge) · Ausführlich (10–12 Einträge) |
+| Box unten links | Formel-Box (Standard) · Code-Box |
 
-**Layout jedes Cheat-Sheets:**
+**Layout:**
 - Header mit Titel und Untertitel
 - 3 Karten oben (je eine Spalte)
 - 2 Karten + Modifier-Pills in der Mitte
-- Code-Box oder Formel-Box + Tipps-Karte unten
-- Footer mit Tipp des Tages
+- Formel-Box oder Code-Box + Tipps-Karte unten
+- Footer mit Merksatz
 
-**Alle Templates:**
+---
 
-| Datei | Modus | Zielgruppe | Umfang |
-|---|---|---|---|
-| [CS-Druck-Beginner-Ausfuehrlich.md](docs/cheatsheet/CS-Druck-Beginner-Ausfuehrlich.md) | Druck | Beginner | Ausführlich |
-| [CS-Druck-Beginner-Kompakt.md](docs/cheatsheet/CS-Druck-Beginner-Kompakt.md) | Druck | Beginner | Kompakt |
-| [CS-Druck-Experte-Ausfuehrlich.md](docs/cheatsheet/CS-Druck-Experte-Ausfuehrlich.md) | Druck | Experte | Ausführlich |
-| [CS-Druck-Experte-Kompakt.md](docs/cheatsheet/CS-Druck-Experte-Kompakt.md) | Druck | Experte | Kompakt |
-| [CS-Web-Beginner-Ausfuehrlich.md](docs/cheatsheet/CS-Web-Beginner-Ausfuehrlich.md) | Web | Beginner | Ausführlich |
-| [CS-Web-Beginner-Kompakt.md](docs/cheatsheet/CS-Web-Beginner-Kompakt.md) | Web | Beginner | Kompakt |
-| [CS-Web-Experte-Ausfuehrlich.md](docs/cheatsheet/CS-Web-Experte-Ausfuehrlich.md) | Web | Experte | Ausführlich |
-| [CS-Web-Experte-Kompakt.md](docs/cheatsheet/CS-Web-Experte-Kompakt.md) | Web | Experte | Kompakt |
+### 📋 PDF / HTML Basis (`docs/cheatsheet/Template-Prompt-PDF-Base-v2.md`)
+
+Universalvorlage für strukturierte Dokumente mit Abschnitten und Tabellen. Ausgabe wahlweise als PDF, HTML oder beides.
+
+**Optionen (werden vor Erstellung abgefragt):**
+
+| Option | Auswahl |
+|---|---|
+| Sprache | Deutsch · Englisch · Andere |
+| Ausgabe-Modus | Druck (weiß) · Bildschirm/Web (dunkel) |
+| Dateiformat | PDF · HTML · Beides |
+| Layout | 1-spaltig · 2-spaltig · 3-spaltig |
+| Stil | Sachlich/Clean · Modern/Farbig · Minimal |
+| Umfang | Kompakt (1 Seite) · Standard (2–4 S.) · Ausführlich |
 
 ---
 
 ### 🔬 Research (`docs/research/`) — *in Entwicklung*
-
-Templates für strukturierte Recherche-Dokumente.
-
----
-
 ### 📋 Summary (`docs/summary/`) — *in Entwicklung*
-
-Templates für Zusammenfassungen und Executive Summaries.
+### ⚙️ System (`docs/system/`) — Projekt-Instruktion & Konfiguration
 
 ---
 
-### ⚙️ System (`docs/system/`) — *in Entwicklung*
+## Neues Template hinzufügen
 
-System-Prompts und Konfigurations-Templates.
+In der `PROJEKT-INSTRUKTION.md` unter Abschnitt ① einfach eine neue Zeile ergänzen:
+
+```
+TEMPLATE-NAME → https://raw.githubusercontent.com/.../docs/ordner/Dateiname.md
+```
+
+Kein weiterer Aufwand — Claude erkennt das Template automatisch beim Aufruf per Dateiname oder Thema.
 
 ---
 
 ## Technische Details
 
-**Cheat-Sheet-Engine:**
-- Python + reportlab
-- A4 Portrait (595×842pt)
-- `draw_rows()` mit `row_mid_y`-Zentrierung
-- `wrap_text()` für automatische Zeilenumbrüche
-- `draw_code_box()` mit Terminal-Optik und Syntax-Highlighting
+**Engine (Cheat Sheet):**
+- Python + reportlab, A4 Portrait (595×842pt)
+- `draw_rows()` mit `row_mid_y`-Zentrierung und `wrap_text()` für automatischen Zeilenumbruch
+- `draw_formula_card()` für die Formel-Box (Standard)
+- `draw_code_box()` mit Terminal-Optik und Syntax-Highlighting (optional)
 - Vollfarben: green `#1a6b00` · blue `#004fa3` · purple `#7a00b8` · red `#b80000` · orange `#b86000`
 
-**Wichtig:** Die Engine-Funktionen dürfen nie verändert werden. Claude ersetzt ausschließlich den Block zwischen `── INHALT START ──` und `── INHALT END ──`.
+**Wichtigste Regel:** Engine-Funktionen nie verändern. Claude ersetzt ausschließlich den Block zwischen `── INHALT START ──` und `── INHALT END ──`.
 
 ---
 
@@ -97,12 +96,14 @@ System-Prompts und Konfigurations-Templates.
 ```
 PromptTemplateLibary/
 ├── docs/
-│   ├── cheatsheet/          ← 8 aktive Templates
-│   ├── research/            ← in Entwicklung
-│   ├── summary/             ← in Entwicklung
-│   └── system/              ← in Entwicklung
-├── README.md
-└── PROJEKT-INSTRUKTION.md   ← Instruktion für Claude-Projekte
+│   ├── cheatsheet/
+│   │   ├── Template-Prompt-Cheat-Sheet-v4.md   ← aktive Vorlage
+│   │   └── Template-Prompt-PDF-Base-v2.md       ← aktive Vorlage
+│   ├── research/                                ← in Entwicklung
+│   ├── summary/                                 ← in Entwicklung
+│   └── system/
+│       └── PROJEKT-INSTRUKTION.md               ← Claude-Projekt-Instruktion
+└── README.md
 ```
 
 ---
