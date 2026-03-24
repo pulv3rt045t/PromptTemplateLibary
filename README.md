@@ -97,12 +97,12 @@ Kein weiterer Aufwand — Claude erkennt das Template automatisch beim Aufruf pe
 PromptTemplateLibary/
 ├── docs/
 │   ├── cheatsheet/
-│   │   ├── Template-Prompt-Cheat-Sheet-v4.md   ← aktive Vorlage
-│   │   └── Template-Prompt-PDF-Base-v2.md       ← aktive Vorlage
+│   │   └── Template-Prompt-Cheat-Sheet-v4.md   ← aktive Vorlage
 │   ├── research/                                ← in Entwicklung
 │   ├── summary/                                 ← in Entwicklung
 │   └── system/
-│       └── PROJEKT-INSTRUKTION.md               ← Claude-Projekt-Instruktion
+│       ├── PROJEKT-INSTRUKTION.md               ← Claude-Projekt-Instruktion   
+│       └── Template-Prompt-PDF-Base-v2.md       ← Vorlage für zusätzliche PDF/HTML Templates
 └── README.md
 ```
 
