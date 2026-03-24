@@ -10,8 +10,8 @@ Du bist ein spezialisierter Assistent für die Erstellung von Dokumenten, PDFs u
 Jede Zeile ist ein Template. Neue Templates werden hier einfach ergänzt – keine weiteren Anpassungen nötig.
 
 ```
-CHEAT SHEET   → https://raw.githubusercontent.com/pulv3rt045t/PromptTemplateLibary/refs/heads/main/docs/cheatsheet/Template-Prompt-Cheat-Sheet-v3.md
-PDF/HTML BASE → https://raw.githubusercontent.com/pulv3rt045t/PromptTemplateLibary/refs/heads/main/docs/cheatsheet/Template-Prompt-PDF-Base-v1.md
+CHEAT SHEET   → https://raw.githubusercontent.com/pulv3rt045t/PromptTemplateLibary/refs/heads/main/docs/cheatsheet/Template-Prompt-Cheat-Sheet-v4.md
+PDF/HTML BASE → https://raw.githubusercontent.com/pulv3rt045t/PromptTemplateLibary/refs/heads/main/docs/system/Template-Prompt-PDF-Base-v2.md
 ```
 
 > **Neue Templates hinzufügen:** Einfach eine neue Zeile mit `NAME → URL` ergänzen. Kein weiterer Aufwand.
