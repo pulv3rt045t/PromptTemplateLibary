@@ -73,38 +73,23 @@ Die Abfrage muss zuerst vollständig durchgeführt und beantwortet worden sein.
 ```
 Kurze Klärung bevor ich loslege:
 
-📌 Titel:    "[THEMA – Claude-Vorschlag]"  → Ändern? ___
-🎯 Fokus:    [ ] Claude entscheidet  [ ] Eigener: ___     ← IMMER fragen
-🚫 Ausschl.: [ ] Nichts              [ ] Eigener: ___     ← IMMER fragen
+📌 Titel: „[THEMA – Claude-Vorschlag]" — passt so, oder anders?
+🎯 Fokus: Claude entscheidet / oder eigener Fokus: ___
+🚫 Ausschl.: Nichts / oder ausschließen: ___
+📤 Ausgabe: Druck→PDF / Web→HTML / Druck→PDF+HTML / Web→HTML+PDF
+👤 Zielgruppe: Einsteiger / Experte
 
-📤 Ausgabe:  [ ] Druck → PDF  [ ] Druck → PDF + HTML
-             [ ] Web (dunkel) → HTML  [ ] Web → HTML + PDF
-👤 Zielgr.:  [ ] Einsteiger  [ ] Experte
-📊 Umfang:   [ ] Kompakt  [ ] Ausführlich
-📖 Erkl.-Box:[ ] Ja  [ ] Nein
-             (Einsteiger: Wozu/Umgebung/Einstieg · Experte: Hintergrund/Einordnung)
-[template-spez.] → wird durch das Template ergänzt
-
-Weitere Details (optional): ___________
+Weitere Details (optional): ___
 ```
 
+**Wichtig zur Darstellung:** Die Abfrage als kurze Frage formulieren — **nicht** als Liste mit Checkboxen oder Aufzählungspunkten. Claude stellt die Abfrage in einem Absatz oder als knappe Zeilen, sodass der Nutzer antwortet statt eine Ausgabe zu sehen.
+
 → **Einmal warten**, dann Template laden und Erstellung starten.
-→ 🎯 Fokus und 🚫 Ausschließen sind **Pflichtfelder** — immer stellen, auch wenn andere Details bereits bekannt sind.
-→ 📌 Titel: Claude-Vorschlag direkt im Feld zeigen — nur nachfragen wenn Nutzer explizit abweichen möchte.
-→ 🌍 Sprache: nur fragen wenn das Thema fremdsprachig klingt, der Nutzer es erwähnt oder eine andere Sprache als Deutsch naheliegend ist.
-→ 📤 Ausgabe: Web-Modus → Standard HTML; Druck-Modus → Standard PDF. „Beides" explizit wählbar.
-→ 📖 Erklär-Box: für beide Zielgruppen verfügbar. Inhalt je nach Zielgruppe: Einsteiger = Wozu dient es / Umgebung / erster Schritt; Experte = Hintergrund / Einordnung / Abgrenzung.
-→ Alle anderen Felder: wenn im Aufruf bereits beantwortet, direkt übernehmen.
-→ Template-spezifische Zusatz-Optionen (Vergleich: Anzahl Optionen; One-Pager: Struktur) stehen im Template-Kommentar und werden zur Abfrage ergänzt.
-
----
-
-### VERKNÜPFUNG ZIELGRUPPE ↔ ERKLÄR-BOX
-
-| Zielgruppe | Standard | Inhalt wenn Ja |
-|---|---|---|
-| Einsteiger | **Ja** – vorauswählen, aber abfragen | Wozu dient das Thema · Systemumgebung · erster Schritt |
-| Experte | **Nein** – vorauswählen, aber abfragen | Hintergrund · Einordnung · Abgrenzung zu ähnlichen Tools |
+→ 🎯 Fokus und 🚫 Ausschl. sind **Pflichtfelder** — immer stellen, auch wenn andere Details bekannt sind.
+→ 📌 Titel: Claude-Vorschlag direkt zeigen — Nutzer korrigiert nur wenn nötig.
+→ 📤 Ausgabe: Umfang (Kompakt/Ausführlich) und Erklär-Box werden aus Zielgruppe abgeleitet — Einsteiger = Ausführlich + Erklär-Box Ja (Wozu/Umgebung/Einstieg); Experte = Kompakt + Erklär-Box Nein — außer Nutzer gibt im Freitextfeld etwas anderes an.
+→ 🌍 Sprache: nur fragen wenn Thema fremdsprachig ist oder Nutzer es erwähnt.
+→ Template-spezifische Zusatz-Optionen (Vergleich: Anzahl Optionen; One-Pager: Struktur) als Zusatzzeile in der Abfrage ergänzen.
 
 ---
 
