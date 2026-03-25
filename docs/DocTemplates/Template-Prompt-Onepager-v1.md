@@ -1,92 +1,40 @@
 # TEMPLATE: One-Pager – Universalvorlage
 # Datei: Template-Prompt-Onepager-v1.md
-# Aufruf im Chat: "Onepager zu [THEMA]" oder "Template-Prompt-Onepager-v1"
+# Aufruf im Chat: "Onepager zu [THEMA]"
 #
-# ═══════════════════════════════════════════════════════════
-# ANWEISUNG AN CLAUDE – PFLICHTABLAUF:
+# ABLAUF: Siehe PROJEKT-INSTRUKTION (Abfrage 1 + 2 dort definiert)
 #
-# SCHRITT 1: THEMEN-PRÄZISIERUNG
-# Stelle dem Nutzer ZUERST diese Abfrage. Warte auf Antwort.
-# Ziel: Zweck, Zielgruppe und Kernbotschaft des One-Pagers klären.
+# TEMPLATE-SPEZIFISCHE ZUSATZ-OPTIONEN (in Abfrage 2 ergänzen):
+#   🎨 Stil:      [ ] Sachlich/Professionell  [ ] Modern/Visuell
+#   📊 Struktur:  [ ] Standard (Zusammenfassung + Blöcke + Nächste Schritte)
+#                 [ ] Pitch    (Problem → Lösung → Nutzen → CTA)
+#                 [ ] Status   (Überblick → Erledigtes → Offenes → Risiken)
 #
-#   Ich präzisiere kurz den One-Pager bevor ich loslege:
+# ABFRAGE 1 ANGEPASST FÜR ONE-PAGER:
+#   📌 Titel?  🎯 Zweck? (Entscheidungsvorlage / Pitch / Status / Einführung)
+#   👥 Zielgruppe / Leser?  🚫 Was soll NICHT enthalten sein?
 #
-#   📌 Titel / Überschrift:
-#      [ ] Vorschlag von Claude: "[THEMA]"
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🎯 Zweck des One-Pagers:
-#      [ ] Entscheidungsvorlage (z.B. für Meeting / Management)
-#      [ ] Projektübersicht / Status
-#      [ ] Produkt- / Ideen-Pitch
-#      [ ] Einführung / Onboarding
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   👥 Zielgruppe / Leser:
-#      [ ] Claude entscheiden lassen
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🚫 Was soll NICHT enthalten sein?
-#      [ ] Nichts ausschließen
-#      [ ] Eigene Eingabe: ___________________________
-#
-# → Claude wartet auf Antwort bevor es zu Schritt 2 geht.
-#
-# SCHRITT 2: FORMAT-OPTIONEN
-# Erst nach Schritt 1. Warte auf Antwort.
-#
-#   Und noch die Format-Optionen:
-#
-#   🌍 Sprache:        [ ] Deutsch  [ ] Englisch  [ ] Andere: ___
-#   🖨️  Ausgabe-Modus:  [ ] Druck (weiß)  [ ] Bildschirm/Web (dunkel)
-#   📄 Dateiformat:    [ ] PDF  [ ] HTML  [ ] Beides
-#   🎨 Stil:           [ ] Sachlich/Professionell  [ ] Modern/Visuell
-#   📊 Struktur:       [ ] Standard (Zusammenfassung + Blöcke + Nächste Schritte)
-#                      [ ] Pitch (Problem + Lösung + Nutzen + Call-to-Action)
-#                      [ ] Status (Überblick + Fortschritt + Risiken + Next Steps)
-#   📖 Erklär-Box:     [ ] Ja – Kontext/Hintergrund einfügen
-#                      [ ] Nein
-#      → Bei "Einführung / Onboarding" als Zweck: automatisch empfohlen
-#
-#   Weitere Details (optional): ___________
-#
-# SCHRITT 3: OPTIONEN ANWENDEN
-#   Druck          → Druck-Palette (Standard)
-#   Web            → Web-Palette einkommentieren
-#   Sachlich       → AKZENT_FARBE = 'blue', klare Struktur
-#   Modern         → AKZENT_FARBE nach Thema wählen, mehr Kontrast
-#   Standard       → STRUKTUR = 'standard' (Zusammenfassung + Inhaltsblöcke + Nächste Schritte)
-#   Pitch          → STRUKTUR = 'pitch'    (Problem + Lösung + Nutzen + CTA)
-#   Status         → STRUKTUR = 'status'   (Überblick + Fortschritt + Risiken + Next Steps)
-#   Erklär-Box     → ERKLAER_BOX befüllen, sonst None
-#
-# SCHRITT 4: NUR INHALT START/END BLOCK ERSETZEN
-# Engine-Funktionen NIEMALS verändern!
-#
-# SCHRITT 5: SCRIPT AUSFÜHREN
-#   pip install reportlab --break-system-packages -q
-#   make_pdf('/home/claude/output.pdf')
-# ═══════════════════════════════════════════════════════════
+# OPTIONEN ANWENDEN:
+#   Sachlich → AKZENT_FARBE = 'blue'     |  Modern → Farbe nach Thema
+#   Standard → STRUKTUR = 'standard'     |  SCHRITTE_TITEL = 'NÄCHSTE SCHRITTE'
+#   Pitch    → STRUKTUR = 'pitch'        |  SCHRITTE_TITEL = 'CALL TO ACTION'
+#   Status   → STRUKTUR = 'status'       |  SCHRITTE_TITEL = 'NEXT STEPS'
+#   Erklär-Box Ja → ERKLAER_BOX befüllen |  Nein → None
 #
 # FARBPALETTEN:
-# DRUCK (hell):
-#   page_bg:#ffffff  card_bg:#ffffff  card_border:#dddddd
-#   val_text:#333333  footer_text:#999999  header_text:#111111
-#   rule:#dddddd  bg:#f5f5f5
-# WEB/BILDSCHIRM (dunkel):
-#   page_bg:#0f0f0f  card_bg:#1a1a1a  card_border:#2e2e2e
-#   val_text:#cccccc  footer_text:#555555  header_text:#ffffff
-#   rule:#2e2e2e  bg:#252525
-# VOLLFARBEN:
-#   green:#1a6b00  blue:#004fa3  purple:#7a00b8
-#   red:#b80000    orange:#b86000
+#   DRUCK:  page_bg:#ffffff  card_bg:#ffffff  card_border:#dddddd
+#           val_text:#333333  footer_text:#999999  header_text:#111111
+#           rule:#dddddd  bg:#f5f5f5
+#   WEB:    page_bg:#0f0f0f  card_bg:#1a1a1a  card_border:#2e2e2e
+#           val_text:#cccccc  footer_text:#555555  header_text:#ffffff
+#   FARBEN: green:#1a6b00  blue:#004fa3  purple:#7a00b8
+#           red:#b80000    orange:#b86000
 #
 # ZEICHENLIMITS:
-#   Titel Hauptblock:     max. 22 Zeichen
-#   Stichpunkt-Zeile:     max. 65 Zeichen (Vollbreite) / 45 Zeichen (2-spaltig)
-#   Zusammenfassung:      max. 3 Sätze / ~180 Zeichen gesamt
-#   Nächste Schritte:     max. 4 Einträge, je max. 55 Zeichen
-#   CTA / Call-to-Action: max. 60 Zeichen
+#   Stichpunkt: max. 65 Z. (1-spaltig) / 45 Z. (2-spaltig)
+#   Block-Titel: max. 22 Z.  |  max. 4 BLOECKE  |  max. 4 NAECHSTE_SCHRITTE
+#
+# ENGINE NIEMALS VERÄNDERN – nur INHALT START/END Block ersetzen.
 # ═══════════════════════════════════════════════════════════
 
 ```python

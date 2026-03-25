@@ -1,82 +1,34 @@
 # TEMPLATE: PDF / HTML – Universalbasis
 # Datei: Template-Prompt-PDF-Base-v5.md
-# Aufruf im Chat: "PDF zu [THEMA]" oder "Template-Prompt-PDF-Base-v5"
+# Aufruf im Chat: "PDF zu [THEMA]"
 #
-# ═══════════════════════════════════════════════════════════
-# ANWEISUNG AN CLAUDE – PFLICHTABLAUF:
+# ABLAUF: Siehe PROJEKT-INSTRUKTION (Abfrage 1 + 2 dort definiert)
 #
-# SCHRITT 1: THEMEN-PRÄZISIERUNG (VOR DEN FORMAT-OPTIONEN)
-# Stelle dem Nutzer ZUERST diese Abfrage. Warte auf Antwort.
-# Ziel: Fehlinterpretationen des Themas verhindern, Retry-Schleifen vermeiden.
+# TEMPLATE-SPEZIFISCHE ZUSATZ-OPTIONEN (in Abfrage 2 ergänzen):
+#   📐 Layout:   [ ] Karten 2-spaltig (Standard)  [ ] 1-spaltig
+#   📏 Umfang:   [ ] Kompakt (1 Seite)  [ ] Standard (2–4 S.)  [ ] Ausführlich
 #
-#   Ich präzisiere kurz das Thema bevor ich loslege:
-#
-#   📌 Titel / Überschrift:
-#      [ ] Vorschlag von Claude: "[THEMA] – Referenz / Dokumentation"
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🎯 Themen-Fokus (was soll schwerpunktmäßig abgedeckt werden?):
-#      [ ] Vorschlag von Claude entscheiden lassen
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🚫 Ausgeschlossene Themen (was soll NICHT enthalten sein?):
-#      [ ] Nichts ausschließen
-#      [ ] Eigene Eingabe: ___________________________
-#
-# → Claude wartet auf Antwort bevor es zu Schritt 2 geht.
-#
-# SCHRITT 2: FORMAT-OPTIONEN
-# Stelle dem Nutzer VOR der Erstellung folgende Abfrage im Chat.
-# Warte auf Antwort bevor du weitermachst.
-#
-#   Bevor ich loslege – ein paar kurze Optionen:
-#
-#   🌍 Sprache:        [ ] Deutsch  [ ] Englisch  [ ] Andere: ___
-#   🖨️  Ausgabe-Modus:  [ ] Druck (weiß)  [ ] Bildschirm/Web (dunkel)
-#   📄 Dateiformat:    [ ] PDF  [ ] HTML  [ ] Beides
-#   📐 Layout:         [ ] 1-spaltig  [ ] 2-spaltig  [ ] 3-spaltig
-#   🎨 Stil:           [ ] Sachlich/Clean  [ ] Modern/Farbig  [ ] Minimal
-#   📏 Umfang:         [ ] Kompakt (1 Seite)  [ ] Standard (2–4 S.)  [ ] Ausführlich
-#   👤 Zielgruppe:     [ ] Einsteiger  [ ] Fachpublikum  [ ] Gemischt
-#   📖 Erklär-Box:    [ ] Ja – Einführung zu Verwendung/Umgebung einfügen
-#                     [ ] Nein (Standard bei Fachpublikum/Experte)
-#      → Bei Einsteiger: automatisch empfohlen
-#      → Erscheint als erster farbiger Abschnitt vor den anderen Karten
-#      → Inhalt: Wozu dient das Thema? Wo eingesetzt? Was brauche ich?
-#
-#   Weitere Details / Schwerpunkte (optional): ___________
-#
-# SCHRITT 3: FORMAT WÄHLEN UND ERSTELLEN
-#   PDF  → Python reportlab, A4 portrait
-#   HTML → Standalone HTML mit eingebettetem CSS
-#   Beides → Erst PDF, dann HTML-Äquivalent
-#
-# SCHRITT 4: DATEI AUSFÜHREN / LIEFERN
-#   PDF: pip install reportlab --break-system-packages -q
-#        python script.py → present_files
-#   HTML: Direkt als .html Datei speichern → present_files
-# ═══════════════════════════════════════════════════════════
+# OPTIONEN ANWENDEN:
+#   Druck/Web  → COLORS-Dict hell/dunkel (Variante auskommentiert vorhanden)
+#   Karten     → LAYOUT = 'cards'   (Standard)
+#   1-spaltig  → LAYOUT = 'single'
+#   Einsteiger → ERKLAER_BOX befüllen  |  Experte → None
+#   PDF        → ersten Python-Block verwenden (reportlab)
+#   HTML       → zweiten Python-Block verwenden
+#   Beides     → beide Blöcke ausführen
 #
 # FARBPALETTEN:
+#   DRUCK:  bg:#ffffff  text:#111111  accent:#004fa3  border:#dddddd  card:#f5f5f5
+#   WEB:    bg:#0f0f0f  text:#ffffff  accent:#4d9fff  border:#2e2e2e  card:#1a1a1a
+#   FARBEN: green:#1a6b00  blue:#004fa3  purple:#7a00b8
+#           red:#b80000    orange:#b86000
 #
-# DRUCK (hell):
-#   Hintergrund: #ffffff  Text: #111111  Akzent: #004fa3
-#   Sekundär: #1a6b00  Muted: #666666  Border: #dddddd
+# ZEICHENLIMITS:
+#   Stichpunkt: max. 70 Z. (single) / max. 40 Z. (cards)
+#   Abschnittstitel: max. 30 Z.  |  Tabellenzelle: max. 25 Z.
 #
-# WEB/BILDSCHIRM (dunkel):
-#   Hintergrund: #0f0f0f  Text: #ffffff  Akzent: #004fa3
-#   Sekundär: #1a6b00  Muted: #888888  Border: #2e2e2e
-#
-# VOLLFARBEN (beide Modi):
-#   green:#1a6b00  blue:#004fa3  purple:#7a00b8
-#   red:#b80000    orange:#b86000
+# ENGINE NIEMALS VERÄNDERN – nur INHALT START/END Block ersetzen.
 # ═══════════════════════════════════════════════════════════
-
-# ── PDF-ENGINE (für PDF-Ausgabe) ────────────────────────────
-# Layout-Optionen:
-#   'single'  → 1-spaltig (Standard für kurze Dokumente)
-#   'two-col' → 2-spaltig: linke Sidebar (Inhalt) + rechte Details
-#   'cards'   → Karten-Layout: Abschnitte als farbige Karten (wie Cheat Sheet)
 
 ```python
 # PDF-VARIANTE
@@ -118,17 +70,6 @@ TITEL      = '[DOKUMENTTITEL]'
 UNTERTITEL = '[Kurzbeschreibung · Quelle/Datum]'
 LAYOUT     = 'cards'    # 'single' | 'two-col' | 'cards'
 SPRACHE    = 'de'       # 'de' | 'en'
-
-# ERKLÄR-BOX (optional, empfohlen für Einsteiger)
-# Bei Einsteiger: befüllen. Bei Fachpublikum/Experte: None setzen.
-# Wird als erster hervorgehobener Abschnitt vor allen anderen angezeigt.
-ERKLAER_BOX = None   # None = nicht anzeigen
-# ERKLAER_BOX = ('[THEMA] – EINFÜHRUNG & EINSATZZWECK', 'blue', [
-#     '[Wozu dient das Thema? Was ist der Hauptzweck?]',
-#     '[In welcher Umgebung / welchem System wird es eingesetzt?]',
-#     '[Was brauche ich um loszulegen? Voraussetzungen?]',
-#     '[Typischer erster Schritt / Einstiegspunkt]',
-# ])
 
 # Abschnitte: (Titel, Farbe, [Stichpunkte])
 # Farbe nur relevant bei LAYOUT='cards': 'blue'|'green'|'purple'|'red'|'orange'|'gray'
@@ -274,18 +215,6 @@ def build_cards_layout(story, styles, W, margins):
         story.append(row)
 
 def build_single_layout(story, styles):
-    if ERKLAER_BOX:
-        title, col, lines = ERKLAER_BOX
-        ac_hex = ACCENT_COLORS.get(col, COLORS['accent'])
-        h_s = ParagraphStyle('eh', fontName='Helvetica-Bold', fontSize=9,
-                              textColor=hx(COLORS['white']), backColor=hx(ac_hex),
-                              spaceBefore=0, spaceAfter=0, borderPadding=(3,6,3,6))
-        i_s = ParagraphStyle('ei', fontName='Helvetica', fontSize=8,
-                              textColor=hx(COLORS['text']), spaceAfter=2, leading=11)
-        story.append(Paragraph(title, h_s))
-        for line in lines:
-            story.append(Paragraph(f'• {line}', i_s))
-        story.append(Spacer(1, 6))
     for sec_title, accent_col, items in ABSCHNITTE:
         ac = ACCENT_COLORS.get(accent_col, COLORS['accent'])
         sec_s = ParagraphStyle('s', fontName='Helvetica-Bold', fontSize=9,

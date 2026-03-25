@@ -1,89 +1,39 @@
 # TEMPLATE: Vergleichstabelle – Universalvorlage
 # Datei: Template-Prompt-Comparison-v1.md
-# Aufruf im Chat: "Vergleiche [A] vs [B]" oder "Template-Prompt-Comparison-v1"
+# Aufruf im Chat: "Vergleiche [A] vs [B]"
 #
-# ═══════════════════════════════════════════════════════════
-# ANWEISUNG AN CLAUDE – PFLICHTABLAUF:
+# ABLAUF: Siehe PROJEKT-INSTRUKTION (Abfrage 1 + 2 dort definiert)
 #
-# SCHRITT 1: THEMEN-PRÄZISIERUNG
-# Stelle dem Nutzer ZUERST diese Abfrage. Warte auf Antwort.
-# Ziel: Vergleichsobjekte, Kriterien und Entscheidungskontext klären.
+# TEMPLATE-SPEZIFISCHE ZUSATZ-OPTIONEN (in Abfrage 2 ergänzen):
+#   🔢 Anzahl Optionen: [ ] 2  [ ] 3  [ ] 4
+#   ⭐ Empfehlung:      [ ] Ja (mit Begründung + Alternativ-Fall)  [ ] Nein
 #
-#   Ich präzisiere kurz den Vergleich bevor ich loslege:
+# ABFRAGE 1 ANGEPASST FÜR VERGLEICHE:
+#   📌 Was wird verglichen? → max. 4 Optionen, Name je max. 14 Z.
+#   📐 Vergleichskriterien? → Claude wählt oder eigene Eingabe
+#   🎯 Entscheidungskontext? → wofür wird der Vergleich genutzt
+#   🚫 Ausgeschlossene Aspekte?
 #
-#   📌 Was wird verglichen? (Optionen / Alternativen):
-#      [ ] Vorschlag von Claude übernehmen
-#      [ ] Eigene Eingabe: ___ vs ___ vs ___ (max. 4 Optionen)
-#
-#   📐 Vergleichskriterien (Zeilen der Tabelle):
-#      [ ] Claude entscheiden lassen (themenrelevante Kriterien)
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🎯 Entscheidungskontext (wofür wird der Vergleich genutzt?):
-#      [ ] Allgemeine Übersicht
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🚫 Ausgeschlossene Aspekte:
-#      [ ] Nichts ausschließen
-#      [ ] Eigene Eingabe: ___________________________
-#
-# → Claude wartet auf Antwort bevor es zu Schritt 2 geht.
-#
-# SCHRITT 2: FORMAT-OPTIONEN
-# Erst nach Schritt 1. Warte auf Antwort.
-#
-#   Und noch die Format-Optionen:
-#
-#   🌍 Sprache:        [ ] Deutsch  [ ] Englisch  [ ] Andere: ___
-#   🖨️  Ausgabe-Modus:  [ ] Druck (weiß)  [ ] Bildschirm/Web (dunkel)
-#   📄 Dateiformat:    [ ] PDF  [ ] HTML  [ ] Beides
-#   🔢 Anzahl Optionen:[ ] 2  [ ] 3  [ ] 4
-#   📊 Umfang:         [ ] Kompakt (8–10 Kriterien)  [ ] Ausführlich (14–18 Kriterien)
-#   ⭐ Empfehlung:     [ ] Ja – Empfehlungszeile + Fazit einfügen
-#                      [ ] Nein – nur neutraler Vergleich
-#   📖 Erklär-Box:     [ ] Ja – Kontext/Hintergrund zum Thema
-#                      [ ] Nein (Standard bei Experte)
-#      → Bei Einsteiger: automatisch empfohlen
-#
-#   Weitere Details (optional): ___________
-#
-# SCHRITT 3: OPTIONEN ANWENDEN
-#   Druck        → Druck-Palette (Standard)
-#   Web          → Web-Palette einkommentieren
-#   2 Optionen   → OPTIONEN Liste hat 2 Einträge, Tabelle 3 Spalten (Kriterium + 2)
-#   3 Optionen   → 4 Spalten
-#   4 Optionen   → 5 Spalten
-#   Kompakt      → 8–10 Kriterien, kurze Einträge
-#   Ausführlich  → 14–18 Kriterien, detaillierte Einträge
-#   Empfehlung   → EMPFEHLUNG und FAZIT befüllen, sonst None
-#   Erklär-Box   → ERKLAER_BOX befüllen, sonst None
-#
-# SCHRITT 4: NUR INHALT START/END BLOCK ERSETZEN
-# Engine-Funktionen NIEMALS verändern!
-#
-# SCHRITT 5: SCRIPT AUSFÜHREN
-#   pip install reportlab --break-system-packages -q
-#   make_pdf('/home/claude/output.pdf')
-# ═══════════════════════════════════════════════════════════
+# OPTIONEN ANWENDEN:
+#   Druck/Web → C-Dict hell/dunkel (wie Standard)
+#   2 Opt. → Zellinhalt max. 28 Z.  |  3 Opt. → max. 20 Z.  |  4 Opt. → max. 15 Z.
+#   Empfehlung Ja → EMPFEHLUNG-Dict befüllen  |  Nein → EMPFEHLUNG = None
+#   Erklär-Box Ja → ERKLAER_BOX befüllen      |  Nein → None
 #
 # FARBPALETTEN:
-# DRUCK (hell):
-#   page_bg:#ffffff  card_bg:#ffffff  card_border:#dddddd
-#   val_text:#333333  footer_text:#999999  header_text:#111111
-#   rule:#dddddd  bg:#f5f5f5
-# WEB/BILDSCHIRM (dunkel):
-#   page_bg:#0f0f0f  card_bg:#1a1a1a  card_border:#2e2e2e
-#   val_text:#cccccc  footer_text:#555555  header_text:#ffffff
-#   rule:#2e2e2e  bg:#252525
-# VOLLFARBEN:
-#   green:#1a6b00  blue:#004fa3  purple:#7a00b8
-#   red:#b80000    orange:#b86000
+#   DRUCK:  page_bg:#ffffff  card_bg:#ffffff  card_border:#dddddd
+#           val_text:#333333  footer_text:#999999  header_text:#111111
+#           rule:#dddddd  bg:#f5f5f5
+#   WEB:    page_bg:#0f0f0f  card_bg:#1a1a1a  card_border:#2e2e2e
+#           val_text:#cccccc  footer_text:#555555  header_text:#ffffff
+#   FARBEN: green:#1a6b00  blue:#004fa3  purple:#7a00b8
+#           red:#b80000    orange:#b86000
 #
 # ZEICHENLIMITS:
-#   Optionsname (Spaltenheader): max. 14 Zeichen
-#   Kriterium (Zeilenheader):    max. 20 Zeichen
-#   Zellinhalt:                  max. 28 Zeichen (2 Opt.) / 20 Z. (3 Opt.) / 15 Z. (4 Opt.)
-#   Empfehlung/Fazit:            max. 80 Zeichen pro Zeile
+#   Optionsname: max. 14 Z.  |  Kriterium: max. 20 Z.
+#   Zellinhalt:  max. 28 Z. (2 Opt.) / 20 Z. (3 Opt.) / 15 Z. (4 Opt.)
+#
+# ENGINE NIEMALS VERÄNDERN – nur INHALT START/END Block ersetzen.
 # ═══════════════════════════════════════════════════════════
 
 ```python

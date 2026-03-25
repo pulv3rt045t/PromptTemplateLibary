@@ -1,111 +1,38 @@
 # TEMPLATE: Cheat Sheet – Universalvorlage
 # Datei: Template-Prompt-Cheat-Sheet-v7.md
-# Aufruf im Chat: "CheatSheet zu [THEMA]" oder "Template-Prompt-Cheat-Sheet-v7"
+# Aufruf im Chat: "CheatSheet zu [THEMA]"
 #
-# ═══════════════════════════════════════════════════════════
-# ANWEISUNG AN CLAUDE – PFLICHTABLAUF:
+# ABLAUF: Siehe PROJEKT-INSTRUKTION (Abfrage 1 + 2 dort definiert)
 #
-# SCHRITT 1: THEMEN-PRÄZISIERUNG (NEU – VOR DEN FORMAT-OPTIONEN)
-# Stelle dem Nutzer ZUERST diese Abfrage. Warte auf Antwort.
-# Ziel: Fehlinterpretationen des Themas verhindern, Retry-Schleifen vermeiden.
+# TEMPLATE-SPEZIFISCHE ZUSATZ-OPTIONEN (in Abfrage 2 ergänzen):
+#   💻 Box unten:  [ ] Formel-Box (Standard)  [ ] Code-Box (nur Web/HTML)
 #
-#   Ich präzisiere kurz das Thema bevor ich loslege:
-#
-#   📌 Titel / Überschrift:
-#      [ ] Vorschlag von Claude: "[THEMA] CHEAT SHEET"
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🎯 Themen-Fokus (was soll schwerpunktmäßig abgedeckt werden?):
-#      [ ] Vorschlag von Claude entscheiden lassen
-#      [ ] Eigene Eingabe: ___________________________
-#
-#   🚫 Ausgeschlossene Themen (was soll NICHT enthalten sein?):
-#      [ ] Nichts ausschließen
-#      [ ] Eigene Eingabe: ___________________________
-#
-# → Claude wartet auf diese Antwort bevor es zu Schritt 2 geht.
-# → Wenn der Nutzer "Claude entscheiden lassen" wählt, kurz begründen
-#   welchen Fokus Claude gewählt hat bevor die Erstellung startet.
-#
-# SCHRITT 2: FORMAT-OPTIONEN
-# Erst nach Schritt 1 diese Abfrage stellen. Warte auf Antwort.
-#
-#   Und noch die Format-Optionen:
-#
-#   🌍 Sprache:       [ ] Deutsch  [ ] Englisch  [ ] Andere: ___
-#   🖨️  Ausgabe-Modus: [ ] Druck (weiß)  [ ] Bildschirm/Web (dunkel)
-#   📄 Dateiformat:   [ ] PDF  [ ] HTML  [ ] Beides
-#   👤 Zielgruppe:    [ ] Einsteiger  [ ] Experte
-#   📊 Umfang:        [ ] Kompakt (6–8)  [ ] Ausführlich (10–12)
-#   💻 Box unten:     [ ] Formel-Box (Standard)  [ ] Code-Box
-#   📖 Erklär-Box:    [ ] Ja – Erklärung zu Verwendung/Umgebung einfügen
-#                     [ ] Nein (Standard bei Experte)
-#      → Bei Einsteiger: automatisch empfohlen
-#      → Zeigt: Wozu dient das Thema? Wo/wie wird es eingesetzt?
-#        Was brauche ich um loszulegen? (3–5 Sätze, alltagsverständlich)
-#
-# SCHRITT 3: OPTIONEN ANWENDEN
-# Wende alle Antworten aus Schritt 1+2 auf den INHALT START-Block an:
-#   Druck       → Farben aus DRUCK-PALETTE (Standard)
-#   Web         → Farben aus WEB-PALETTE (auskommentiert, einkommentieren)
-#   Kompakt     → 6–8 Einträge pro Karte, klare einfache Sprache
-#   Ausführlich → 10–12 / 8–10 Einträge, präzise Fachsprache
-#   Formel-Box  → CODE_BOX = None, FORMEL_LABEL/TEILE/BEISPIEL befüllen (Standard!)
-#   Code-Box    → CODE_BOX = (...) setzen, FORMEL_* leer lassen
-#   Erklär-Box  → ERKLAER_BOX = (...) befüllen (Einsteiger: immer; Experte: weglassen)
-#   Fokus       → Karten-Titel und Inhalte spiegeln den gewählten Fokus wider
-#   Ausschluss  → Ausgeschlossene Themen erscheinen in keiner Karte
-#
-# SCHRITT 4: NUR INHALT START/END BLOCK ERSETZEN
-# Engine-Funktionen NIEMALS verändern!
-#
-# SCHRITT 5: SCRIPT AUSFÜHREN
-#   pip install reportlab --break-system-packages -q
-#   make_pdf('/home/claude/output.pdf')
-# ═══════════════════════════════════════════════════════════
+# OPTIONEN ANWENDEN:
+#   Druck    → C-Dict hell (Standard, bereits gesetzt)
+#   Web      → C-Dict dunkel einkommentieren
+#   Einsteiger → 6–8 Einträge, einfache Sprache, ERKLAER_BOX befüllen
+#   Experte  → 10–12 Einträge, Fachsprache, ERKLAER_BOX = None
+#   Formel   → CODE_BOX = None, FORMEL_* befüllen
+#   Code-Box → CODE_BOX = (...), FORMEL_* leer lassen
+#   Fokus/Ausschluss aus Abfrage 1 → in Karten-Titeln und Inhalten umsetzen
 #
 # FARBPALETTEN:
+#   DRUCK:  page_bg:#ffffff  card_bg:#ffffff  card_border:#dddddd
+#           val_text:#333333  footer_text:#999999  header_text:#111111
+#           rule:#dddddd  bg:#f5f5f5
+#   WEB:    page_bg:#0f0f0f  card_bg:#1a1a1a  card_border:#2e2e2e
+#           val_text:#cccccc  footer_text:#555555  header_text:#ffffff
+#           rule:#2e2e2e  bg:#252525
+#   FARBEN: green:#1a6b00  blue:#004fa3  purple:#7a00b8
+#           red:#b80000    orange:#b86000
 #
-# DRUCK (hell):
-#   page_bg:#ffffff  card_bg:#ffffff  card_border:#dddddd
-#   val_text:#333333  footer_text:#999999  header_text:#111111
-#   rule:#dddddd  bg:#f5f5f5
+# ZEICHENLIMITS:
+#   Keyword:          max. 18 Z.  |  Beschreibung Karte: max. 35 Z.
+#   Modifier-Label:   max. 14 Z.  |  Modifier-Beschr.:   max. 22 Z.
+#   TIPS-Label:       max. 18 Z.  |  TIPS-Beschr.:        max. 28 Z.
+#   MODIFIERS: genau 10  |  TIPS: genau 6  |  Erklär-Box: max. 4 Zeilen à 55 Z.
 #
-# WEB/BILDSCHIRM (dunkel):
-#   page_bg:#0f0f0f  card_bg:#1a1a1a  card_border:#2e2e2e
-#   val_text:#cccccc  footer_text:#555555  header_text:#ffffff
-#   rule:#2e2e2e  bg:#252525
-#
-# VOLLFARBEN (beide Modi):
-#   green:#1a6b00  blue:#004fa3  purple:#7a00b8
-#   red:#b80000    orange:#b86000
-#
-# ═══════════════════════════════════════════════════════════
-# ZEICHENLIMITS – STRIKT EINHALTEN (PFLICHT, KEINE AUSNAHMEN):
-#
-#   Keyword (Karten):       max. 18 Zeichen  → kurzes Schlagwort
-#   Beschreibung (Karten):  max. 35 Zeichen  → prägnant, kein Füllwort
-#   Modifier-Label:         max. 14 Zeichen  → einzeiliger Begriff
-#   Modifier-Beschreibung:  max. 22 Zeichen  → Kurzbeschreibung
-#   TIPS-Label:             max. 18 Zeichen  → engine garantiert Umbruch
-#   TIPS-Beschreibung:      max. 28 Zeichen  → engine garantiert Umbruch
-#   MODIFIERS:              GENAU 10 Einträge
-#   TIPS:                   GENAU 6 Einträge
-#
-# TIPS-BOX GARANTIERTE FORMATIERUNG (engine-seitig gelöst):
-#   Die Engine verwendet font_size=6.5 und ratio=0.38 – damit passen
-#   auch längste Labels wie "Freigabe-Prozess" oder "Kategorie prüfen".
-#   Label:        max. 18 Zeichen  (~58pt bei 6.5pt Helvetica-Bold)
-#   Beschreibung: max. 28 Zeichen  (~104pt bei 6.5pt Helvetica)
-#   Beispiel OK:    ('Freigabe-Prozess', 'Erst Prüfung, Freigabe') ✓
-#   Kein manuelles Zählen mehr nötig – die Engine bricht automatisch um.
-#
-# QUALITÄTSVORGABEN FÜR DEN INHALT:
-#   - Konsistenz: alle Keywords eines Blocks gleicher Abstraktionsgrad
-#   - Kein Füllwort: "Fehler finden" statt "Dient zum Finden von Fehlern"
-#   - Parallelität: alle Beschreibungen gleiche Satzstruktur
-#   - Formel-Box: [Rolle] + [Aufgabe] + [Kontext] + [Format] + [Einschränkung]
-#     → Bewährtestes Format – nutzen wenn kein reines Code-Thema vorliegt
+# ENGINE NIEMALS VERÄNDERN – nur INHALT START/END Block ersetzen.
 # ═══════════════════════════════════════════════════════════
 
 ```python
