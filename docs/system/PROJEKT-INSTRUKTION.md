@@ -73,33 +73,38 @@ Die Abfrage muss zuerst vollständig durchgeführt und beantwortet worden sein.
 ```
 Kurze Klärung bevor ich loslege:
 
-📌 Titel:          [ ] Claude-Vorschlag: "[THEMA]"  [ ] Eigener: ___
-🎯 Fokus:          [ ] Claude entscheidet  [ ] Eigener: ___
-🚫 Ausschließen:   [ ] Nichts  [ ] Eigener: ___
+📌 Titel:    "[THEMA – Claude-Vorschlag]"  → Ändern? ___
+🎯 Fokus:    [ ] Claude entscheidet  [ ] Eigener: ___     ← IMMER fragen
+🚫 Ausschl.: [ ] Nichts              [ ] Eigener: ___     ← IMMER fragen
 
-🌍 Sprache:        [ ] Deutsch  [ ] Englisch  [ ] Andere: ___
-🖨️  Ausgabe-Modus:  [ ] Druck (weiß)  [ ] Web (dunkel)
-📄 Dateiformat:    [ ] PDF  [ ] HTML  [ ] Beides
-👤 Zielgruppe:     [ ] Einsteiger  [ ] Experte
-📊 Umfang:         [ ] Kompakt  [ ] Ausführlich
-📖 Erklär-Box:     [ ] Ja (empfohlen bei Einsteiger)  [ ] Nein
-[template-spez.]   → wird durch das Template ergänzt
+📤 Ausgabe:  [ ] Druck → PDF  [ ] Druck → PDF + HTML
+             [ ] Web (dunkel) → HTML  [ ] Web → HTML + PDF
+👤 Zielgr.:  [ ] Einsteiger  [ ] Experte
+📊 Umfang:   [ ] Kompakt  [ ] Ausführlich
+📖 Erkl.-Box:[ ] Ja  [ ] Nein
+             (Einsteiger: Wozu/Umgebung/Einstieg · Experte: Hintergrund/Einordnung)
+[template-spez.] → wird durch das Template ergänzt
 
 Weitere Details (optional): ___________
 ```
 
 → **Einmal warten**, dann Template laden und Erstellung starten.
-→ Wenn „Claude entscheidet" bei Fokus: gewählten Fokus kurz nennen bevor die Erstellung beginnt.
+→ 🎯 Fokus und 🚫 Ausschließen sind **Pflichtfelder** — immer stellen, auch wenn andere Details bereits bekannt sind.
+→ 📌 Titel: Claude-Vorschlag direkt im Feld zeigen — nur nachfragen wenn Nutzer explizit abweichen möchte.
+→ 🌍 Sprache: nur fragen wenn das Thema fremdsprachig klingt, der Nutzer es erwähnt oder eine andere Sprache als Deutsch naheliegend ist.
+→ 📤 Ausgabe: Web-Modus → Standard HTML; Druck-Modus → Standard PDF. „Beides" explizit wählbar.
+→ 📖 Erklär-Box: für beide Zielgruppen verfügbar. Inhalt je nach Zielgruppe: Einsteiger = Wozu dient es / Umgebung / erster Schritt; Experte = Hintergrund / Einordnung / Abgrenzung.
+→ Alle anderen Felder: wenn im Aufruf bereits beantwortet, direkt übernehmen.
 → Template-spezifische Zusatz-Optionen (Vergleich: Anzahl Optionen; One-Pager: Struktur) stehen im Template-Kommentar und werden zur Abfrage ergänzt.
 
 ---
 
 ### VERKNÜPFUNG ZIELGRUPPE ↔ ERKLÄR-BOX
 
-| Zielgruppe | Standard | Inhalt |
+| Zielgruppe | Standard | Inhalt wenn Ja |
 |---|---|---|
-| Einsteiger | **Ja** – empfehlen falls nicht angegeben | Wozu dient das Thema, Umgebung, erster Schritt |
-| Experte | Nein – nur auf Wunsch | — |
+| Einsteiger | **Ja** – vorauswählen, aber abfragen | Wozu dient das Thema · Systemumgebung · erster Schritt |
+| Experte | **Nein** – vorauswählen, aber abfragen | Hintergrund · Einordnung · Abgrenzung zu ähnlichen Tools |
 
 ---
 
@@ -112,14 +117,16 @@ Lade das passende Template per `web_fetch` von der URL aus Liste ①.
 
 | Option | Anwendung im Code |
 |---|---|
-| Druck | Druck-Farbpalette (C-Dict hell, bereits Standard) |
-| Web | Web-Farbpalette einkommentieren (dunkel) |
-| Einsteiger | Einfache Sprache, 6–8 Einträge, Erklär-Box befüllen |
-| Experte | Fachsprache, 10–12 Einträge, ERKLAER_BOX = None |
-| Erklär-Box Ja | ERKLAER_BOX = ('Titel', 'Farbe', ['Zeile1', ...]) |
+| Druck → PDF | Druck-Farbpalette (hell), PDF ausgeben |
+| Druck → PDF + HTML | Druck-Farbpalette, beide Formate ausgeben |
+| Web → HTML | Web-Farbpalette (dunkel) einkommentieren, HTML ausgeben |
+| Web → HTML + PDF | Web-Farbpalette, beide Formate ausgeben |
+| Einsteiger | Einfache Sprache, 6–8 Einträge; Erklär-Box wenn Ja: Wozu/Umgebung/Einstieg |
+| Experte | Fachsprache, 10–12 Einträge; Erklär-Box wenn Ja: Hintergrund/Einordnung |
+| Erklär-Box Ja | ERKLAER_BOX = ('Titel', 'Farbe', ['Zeile1', ...]) – Inhalt je Zielgruppe |
 | Erklär-Box Nein | ERKLAER_BOX = None |
-| Fokus aus Abfrage 1 | Karten-Titel und Inhalte spiegeln genau diesen Fokus wider |
-| Ausschluss | Ausgeschlossene Themen erscheinen in keiner Karte |
+| Fokus aus Abfrage | Karten-Titel und Inhalte spiegeln genau diesen Fokus wider |
+| Ausschluss | Ausgeschlossene Themen erscheinen in keiner Karte / keinem Abschnitt |
 
 **Schritt 3 – NUR INHALT START/END Block ersetzen**
 Engine-Funktionen **niemals** verändern.
