@@ -31,16 +31,42 @@ Aufruf per Thema oder Dateiname:
 
 ---
 
-## ② PFLICHT-ABLAUF – IMMER IN DIESER REIHENFOLGE
+## ② TEMPLATE-AUSWAHL
+
+**Vor der Abfrage:** Claude wählt das passende Template anhand des Aufrufs und nennt die Wahl mit einer Begründung in einem Satz. Widerspricht der Nutzer, wird das gewünschte Template verwendet.
+
+| Aufruf / Thema | Passendes Template | Begründung |
+|---|---|---|
+| "CheatSheet zu…", Kurzreferenz, Befehle, Keywords | **CheatSheet** | Kurze Einträge, Schnellreferenz, max. Informationsdichte |
+| "Übersicht über…", Funktionen, Erklärung, Einführung | **PDF-Base** | Freie Abschnitte, keine Zeichenlimits, ideal für Erklärungen |
+| "Vergleiche X vs Y", Entscheidungshilfe, Alternativen | **Comparison** | Strukturierte Gegenüberstellung nach Kriterien |
+| "Onepager zu…", Pitch, Entscheidungsvorlage, Status | **One-Pager** | Einseitiges Briefing, Zusammenfassung + Nächste Schritte |
+
+**Beispiele für die Auswahl:**
+- `"Claude Cowork Übersicht"` → **PDF-Base** — Funktionen und Erklärungen brauchen Platz, kein Kurz-Referenz-Format
+- `"Claude Cowork Tastenkürzel"` → **CheatSheet** — kurze Befehle passen ins Referenzkarten-Format
+- `"Claude Code vs Cursor"` → **Comparison** — direkter Vergleich zweier Tools
+- `"Projektvorstellung KI-Einführung"` → **One-Pager** — Pitch-Struktur passt
+
+Wenn der Nutzer explizit ein Template nennt (`"CheatSheet zu…"`), dieses immer verwenden — auch wenn ein anderes besser passen würde. In dem Fall am Ende einen kurzen Hinweis geben ob ein anderes Template eventuell passender gewesen wäre.
+
+---
+
+## ③ PFLICHT-ABLAUF – IMMER IN DIESER REIHENFOLGE
 
 **Claude darf NIEMALS direkt mit der Erstellung beginnen.**
-Beide Abfragen müssen zuerst vollständig durchgeführt und beantwortet worden sein.
+Die Abfrage muss zuerst vollständig durchgeführt und beantwortet worden sein.
 
 ---
 
 ### ABFRAGE – THEMA + FORMAT (kombiniert)
 
-**Sofort nach dem Aufruf** — eine einzige Abfrage, alles auf einmal.
+**Sofort nach dem Aufruf** — zuerst Template-Wahl nennen, dann eine einzige Abfrage.
+
+**Schritt 1:** Template-Wahl kommunizieren (siehe ②):
+> `→ Ich verwende dafür [TEMPLATE-NAME], weil [ein Satz Begründung].`
+
+**Schritt 2:** Abfrage stellen.
 
 **Regel:** Hat der Nutzer bereits Details im Aufruf mitgegeben (z.B. `"CheatSheet zu Docker, Experte, Druck"`), übernimm diese direkt und frage nur nach dem was noch fehlt. Sind alle nötigen Infos vorhanden, starte sofort mit der Erstellung.
 
@@ -77,7 +103,7 @@ Weitere Details (optional): ___________
 
 ---
 
-## ③ NACH DEN ABFRAGEN – ERSTELLUNG
+## ④ NACH DEN ABFRAGEN – ERSTELLUNG
 
 **Schritt 1 – Template laden**
 Lade das passende Template per `web_fetch` von der URL aus Liste ①.
@@ -106,7 +132,7 @@ Ausgabe per `present_files` liefern. Fertige Dokumente können im `output/` Ordn
 
 ---
 
-## ④ ZEICHENLIMITS – STRIKT EINHALTEN
+## ⑤ ZEICHENLIMITS – STRIKT EINHALTEN
 
 | Element | Limit | Begründung |
 |---|---|---|
@@ -127,7 +153,7 @@ Ausgabe per `present_files` liefern. Fertige Dokumente können im `output/` Ordn
 
 ---
 
-## ⑤ FEHLER VERMEIDEN
+## ⑥ FEHLER VERMEIDEN
 
 ❌ Abfragen überspringen und direkt mit der Erstellung beginnen
 ❌ Engine-Funktionen verändern oder neu schreiben
@@ -140,7 +166,7 @@ Ausgabe per `present_files` liefern. Fertige Dokumente können im `output/` Ordn
 
 ---
 
-## ⑥ ORDNERSTRUKTUR
+## ⑦ ORDNERSTRUKTUR
 
 ```
 docs/
