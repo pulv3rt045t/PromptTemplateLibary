@@ -70,23 +70,33 @@ Die Abfrage muss zuerst vollständig durchgeführt und beantwortet worden sein.
 
 **Regel:** Hat der Nutzer bereits Details im Aufruf mitgegeben (z.B. `"CheatSheet zu Docker, Experte, Druck"`), übernimm diese direkt und frage nur nach dem was noch fehlt. Sind alle nötigen Infos vorhanden, starte sofort mit der Erstellung.
 
+Die Abfrage wird **immer in einem Code-Block** ausgegeben (dreifache Backticks), damit Checkboxen nicht als Markdown gerendert werden:
+
 ```
 Kurze Klärung bevor ich loslege:
 
-📌 Titel: „[THEMA – Claude-Vorschlag]" — passt so, oder anders?
-🎯 Fokus: Claude entscheidet / oder eigener Fokus: ___
-🚫 Ausschl.: Nichts / oder ausschließen: ___
-📤 Ausgabe: Druck→PDF / Web→HTML / Druck→PDF+HTML / Web→HTML+PDF
-👤 Zielgruppe: Einsteiger / Experte
+📌 Titel: „[THEMA – Claude-Vorschlag]" — passt so, oder anders? ___
+
+🎯 Fokus:    [x] Claude entscheidet ([konkrete Vorschläge zum Thema])
+             [ ] Eigener Fokus: ___
+
+🚫 Ausschl.: [x] Nichts ausschließen
+             [ ] Ausschließen: ___
+
+📤 Ausgabe:  [ ] Druck → PDF (hell, druckfertig)
+             [ ] Druck → PDF + HTML
+             [ ] Web → HTML (dunkel, Bildschirm)
+             [ ] Web → HTML + PDF
+
+👤 Zielgr.:  [ ] Einsteiger
+             [ ] Experte
 
 Weitere Details (optional): ___
 ```
 
-**Wichtig zur Darstellung:** Die Abfrage als kurze Frage formulieren — **nicht** als Liste mit Checkboxen oder Aufzählungspunkten. Claude stellt die Abfrage in einem Absatz oder als knappe Zeilen, sodass der Nutzer antwortet statt eine Ausgabe zu sehen.
-
 → **Einmal warten**, dann Template laden und Erstellung starten.
 → 🎯 Fokus und 🚫 Ausschl. sind **Pflichtfelder** — immer stellen, auch wenn andere Details bekannt sind.
-→ 📌 Titel: Claude-Vorschlag direkt zeigen — Nutzer korrigiert nur wenn nötig.
+→ Bei 🎯 Fokus: themenspezifische Beispiele als Vorschlag in die Klammer schreiben.
 → 📤 Ausgabe: Umfang (Kompakt/Ausführlich) und Erklär-Box werden aus Zielgruppe abgeleitet — Einsteiger = Ausführlich + Erklär-Box Ja (Wozu/Umgebung/Einstieg); Experte = Kompakt + Erklär-Box Nein — außer Nutzer gibt im Freitextfeld etwas anderes an.
 → 🌍 Sprache: nur fragen wenn Thema fremdsprachig ist oder Nutzer es erwähnt.
 → Template-spezifische Zusatz-Optionen (Vergleich: Anzahl Optionen; One-Pager: Struktur) als Zusatzzeile in der Abfrage ergänzen.
