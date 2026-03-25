@@ -70,36 +70,26 @@ Die Abfrage muss zuerst vollständig durchgeführt und beantwortet worden sein.
 
 **Regel:** Hat der Nutzer bereits Details im Aufruf mitgegeben (z.B. `"CheatSheet zu Docker, Experte, Druck"`), übernimm diese direkt und frage nur nach dem was noch fehlt. Sind alle nötigen Infos vorhanden, starte sofort mit der Erstellung.
 
-Die Abfrage wird **immer in einem Code-Block** ausgegeben (dreifache Backticks), damit Checkboxen nicht als Markdown gerendert werden:
+Die Abfrage wird mit dem **`ask_user_input` Tool** als interaktive Button-Auswahl gestellt — maximal 3 Fragen gleichzeitig pro Runde.
 
-```
-Kurze Klärung bevor ich loslege:
+**Runde 1** — immer, alle 3 Fragen gleichzeitig:
+- 📌 Titel (single_select): „[Claude-Vorschlag]" · „Anderen Titel eingeben →"
+- 📤 Ausgabe (single_select): „Druck → PDF" · „Web → HTML" · „Druck → PDF + HTML" · „Web → HTML + PDF"
+- 👤 Zielgruppe (single_select): „Einsteiger" · „Experte"
 
-📌 Titel: „[THEMA – Claude-Vorschlag]" — passt so, oder anders? ___
+**Runde 2** — immer, beide Fragen gleichzeitig:
+- 🎯 Fokus (single_select): „Claude entscheidet" · „Eigener Fokus →"
+- 🚫 Ausschließen (single_select): „Nichts ausschließen" · „Themen ausschließen →"
 
-🎯 Fokus:    [x] Claude entscheidet ([konkrete Vorschläge zum Thema])
-             [ ] Eigener Fokus: ___
+**Runde 3** — nur wenn in Runde 2 „Eigener Fokus →" oder „Themen ausschließen →" gewählt:
+- Freitext-Nachfrage für die jeweilige Angabe
 
-🚫 Ausschl.: [x] Nichts ausschließen
-             [ ] Ausschließen: ___
-
-📤 Ausgabe:  [ ] Druck → PDF (hell, druckfertig)
-             [ ] Druck → PDF + HTML
-             [ ] Web → HTML (dunkel, Bildschirm)
-             [ ] Web → HTML + PDF
-
-👤 Zielgr.:  [ ] Einsteiger
-             [ ] Experte
-
-Weitere Details (optional): ___
-```
-
-→ **Einmal warten**, dann Template laden und Erstellung starten.
-→ 🎯 Fokus und 🚫 Ausschl. sind **Pflichtfelder** — immer stellen, auch wenn andere Details bekannt sind.
-→ Bei 🎯 Fokus: themenspezifische Beispiele als Vorschlag in die Klammer schreiben.
-→ 📤 Ausgabe: Umfang (Kompakt/Ausführlich) und Erklär-Box werden aus Zielgruppe abgeleitet — Einsteiger = Ausführlich + Erklär-Box Ja (Wozu/Umgebung/Einstieg); Experte = Kompakt + Erklär-Box Nein — außer Nutzer gibt im Freitextfeld etwas anderes an.
-→ 🌍 Sprache: nur fragen wenn Thema fremdsprachig ist oder Nutzer es erwähnt.
-→ Template-spezifische Zusatz-Optionen (Vergleich: Anzahl Optionen; One-Pager: Struktur) als Zusatzzeile in der Abfrage ergänzen.
+→ Umfang + Erklär-Box automatisch aus Zielgruppe ableiten — kein Button nötig:
+  Einsteiger = Ausführlich + Erklär-Box Ja (Wozu/Umgebung/Einstieg)
+  Experte = Kompakt + Erklär-Box Nein (außer Nutzer erwähnt es explizit)
+→ Sprache: nur fragen wenn Thema fremdsprachig ist oder Nutzer es erwähnt.
+→ Template-spezifische Extras (Vergleich: Anzahl Optionen; One-Pager: Struktur) als zusätzliche Frage in Runde 1 ergänzen.
+→ Hat der Nutzer bereits Details im Aufruf mitgegeben, diese übernehmen und die entsprechenden Fragen weglassen.
 
 ---
 
